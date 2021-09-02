@@ -1,0 +1,14 @@
+@localhost = http://localhost:3000
+
+###
+get {{localhost}}/api/users
+
+###
+post {{localhost}}/api/users
+Content-Type: application/json
+Accept-Language: en
+
+{
+    "name" : "fgdd12312312d",
+    "email" : "sa3@bla.com"
+}
