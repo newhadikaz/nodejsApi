@@ -4,6 +4,7 @@ const {body, validationResult} = require('express-validator');
 const User = require('../models/users');
 var userServices = require('../servces/userServices');
 const { handleError, AppError } = require('../helpers/errors')
+const {validate} = require('../helpers/validation')
 
 
 var validators = [
@@ -27,22 +28,16 @@ router.get('/',   async (req, res, next) => {
 
 router.post('/', validators, async (req, res) => {
    
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }else{
-        const body = new User({
-            name : req.body.name,
-            email: req.body.email            
-        });       
-        var result = await userServices.create(req);
-       
-        if(result.status == 'success'){
-            res.status(201).json(result);
-        }else {
-           res.status(400).json({error: result});
-        }
-    }
+      var validationErrors =  validate(req, res);
+      if(validationErrors !== true)  return validationErrors
+      var result = await userServices.create(req);
+      
+      if(result.status == 'success'){
+          res.status(201).json(result);
+      }else {
+          res.status(400).json({error: result});
+      }
+   
   });
 
 module.exports = router

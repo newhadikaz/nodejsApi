@@ -9,6 +9,33 @@ Content-Type: application/json
 Accept-Language: en
 
 {
-    "name" : "fgdd12312312d",
-    "email" : "sa3@bla.com"
+    "name" : "hadi",
+    "email" : "dd@bla.com"
 }
+
+###
+post {{localhost}}/api/posts
+Content-Type: application/json
+Accept-Language: en
+
+{
+    "title" : "this is post",
+    "description": "new description1"
+}
+
+###
+put {{localhost}}/api/posts/6131d71b6a82f0db0d40ee78
+Content-Type: application/json
+Accept-Language: en
+
+{
+    "title" : "this is update5",
+    "description": "new description1"    
+}
+
+###
+get {{localhost}}/api/posts
+
+###
+get {{localhost}}/api/posts/6131d76dd4c8816581e4908b
+

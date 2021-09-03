@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express()
 const port = 3000
 var users = require('./api/users')
+var posts = require('./api/posts')
 const { handleError, AppError } = require('./helpers/errors')
 
 main().catch(err => console.log(err));
@@ -13,7 +14,8 @@ async function main() {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api/users', users)
+app.use('/api/users', users);
+app.use('/api/posts', posts);
 
 
 
