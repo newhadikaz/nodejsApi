@@ -21,7 +21,8 @@ const handleError = (err, res) => {
     });
 
   
-  } else {  
+  } else {
+      console.log(err)
       res.status(500).json({
       status: 'error',
       message: 'Internal Server Error'

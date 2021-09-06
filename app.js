@@ -17,8 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/users', users);
 app.use('/api/posts', posts);
 
-
-
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
